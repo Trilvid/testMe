@@ -6,6 +6,8 @@ import { useState,useEffect,useRef } from 'react'
 import {IoIosArrowRoundUp,IoIosArrowRoundDown} from 'react-icons/io'
 import {MdOutlineContentCopy} from 'react-icons/md'
 import {FiLink} from 'react-icons/fi'
+import Loader from '../../pages/Loader'
+
 const Userdashboardhomepage = ({route}) => {
     const navigate = useNavigate()
     const [clipBoard, setClipBoard] = useState(false)
@@ -37,20 +39,7 @@ const Userdashboardhomepage = ({route}) => {
   return (
     <div className='homewrapper'>
       {
-        loader &&
-          <div className="wifi-loader-container">
-            <div class="loader">
-              <span class="l">L</span>
-              <span class="o">o</span>
-              <span class="a">a</span>
-              <span class="d">d</span>
-              <span class="i">i</span>
-              <span class="n">n</span>
-              <span class="g">g</span>
-              <span class="d1">.</span>
-              <span class="d2">.</span>
-            </div>
-        </div>
+        loader && <Loader />
       }
     <div className='dashboardhomepage'>
        

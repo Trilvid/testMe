@@ -10,6 +10,7 @@ import {AiOutlineClose} from 'react-icons/ai'
 import {GiReceiveMoney} from 'react-icons/gi'
 import {RxDashboard} from 'react-icons/rx'
 import {FaUserFriends} from 'react-icons/fa'
+
 const Userdashboardheader = ({route}) => {
     const navigate = useNavigate()
     const [dropDown,setDropDown] = useState(false)
@@ -135,7 +136,7 @@ const Userdashboardheader = ({route}) => {
         }
         <div  className={`userdashboard-header ${bgColor && 'scroll-head'}`}>
             <div className="userdashboard-logo-container">
-                <img src="/blacklogo (1).png" alt="" className='logo' onClick={()=>{
+                <img src="/whitelogo (2).png" alt="" className='logo' onClick={()=>{
                     navigate('/')
                 }}/>
             </div>

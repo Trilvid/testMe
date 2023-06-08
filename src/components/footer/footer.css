@@ -90,6 +90,8 @@ footer{
     .footer{
       height: auto;
     }
+   
+    
   }
   @media screen and (max-width: 767px){
     .footer{
@@ -136,4 +138,8 @@ footer{
       margin-left: 0px;
       font-size: .7rem;
     }
+     
+  .quicklink-card  img{
+    display: none;
+  }
   }

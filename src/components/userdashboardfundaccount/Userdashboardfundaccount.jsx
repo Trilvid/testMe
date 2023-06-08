@@ -16,6 +16,7 @@ import { Pagination, Navigation ,FreeMode} from "swiper";
 import Checkout from '../Checkout';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+
 const Userdashboardfundaccount = ({route}) => {
   const navigate = useNavigate()
   const [depositAmount, setDepositAmount] = useState()
@@ -29,7 +30,7 @@ const Userdashboardfundaccount = ({route}) => {
       max:1000,
       image:'/btc.png',
       method:'BTC',
-      wallet:'bc1q40uv44tm477h9ggtl6984dws7nu3fx88wesadn',
+      wallet:'bc1qn2hpfxe6j402cwmufr2v04j74gtapsul8cykgm',
     },
     {
       id:2,
@@ -37,15 +38,15 @@ const Userdashboardfundaccount = ({route}) => {
       max:1000,
       image:'/etherium.png',
       method:'ETH',
-      wallet:'0x740FC2A1fAbA86A8b658b122ae6FCc77d6f2E245'
+      wallet:'0x925fBf723B0Df45E854bcA100d57b32cB6556A62'
     },
     {
       id:3,
       min:100,
       max:1000,
-      image:'/bnb.png',
-      method:'BNB (bep20)',
-      wallet:'TNm8remTiUz2NHkdPsjRYY8NQ9YAhxawEw'
+      image:'/tron.png',
+      method:'USDT (tether)',
+      wallet:'TGNvSdfQ36Xq67oXvZAFBw987UdjQnN9pD'
     },
   ])
 
@@ -103,7 +104,7 @@ const Userdashboardfundaccount = ({route}) => {
                     if(depositAmount >= activeMethod.min){
                       setCheckoutPage(true)
                     }
-                    else if(depositAmount == NaN){
+                    else if(depositAmount === NaN){
                       Toast.fire({
                         icon: 'warning',
                         title: 'only numbers are accepted'

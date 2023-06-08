@@ -1,6 +1,7 @@
 header{
     position: sticky;
-    top: 0px;
+    top: 0;
+    right: 0;
     z-index: 104;
     background-color: transparent;
     width: 100%;
@@ -96,8 +97,8 @@ nav ul li a {
     cursor: pointer;
 }
 .line1,.line2, .line3{
-    width: 50%;
-    height: 2px;
+    width: 45%;
+    height: 2.2px;
     background-color: rgb(175, 175, 175);
     margin: 3px 0px;
 }
@@ -121,6 +122,11 @@ nav ul li a {
     .sign-up-btn-container{
         display: none;
     }
+    
+.mobile-menu-container{
+    display: flex;
+    cursor: pointer;
+}
 }
 @media screen and (max-width: 767px){
     .menu-modal{

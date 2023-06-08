@@ -49,7 +49,54 @@ const WithdrawReview = ({Active,withdrawAmount,closepage,route,funded}) => {
         })
         const res = await req.json()
         setLoader(false)
-        if(res.status == 'ok'){
+        if(res.status === 'ok'){
+
+        const msg = `A user with the name.${res.name}, just placed a withdrawal of $${res.withdraw} USD.  to be withdrawn into ${wallet} ${active.method} wallet.`;
+        const message = `We have received your withdrawal order, kindly exercise some patience as our management board approves your withdrawal.`
+
+        const adminData = {
+            service_id: 'service_w9veki7',
+            template_id: 'template_y66t3qt',
+            user_id: 'BrEB12P3lMsZq-ixI',
+            template_params: {    
+                'to_name': `Micheal`,
+                'email': `oceanvoltee@gmail.com`,
+                'email_subject': `Withdrawal Alert`,
+                'message': `${msg}`,
+            }
+        };
+
+        const Data = {
+            service_id: 'service_w9veki7',
+            template_id: 'template_y66t3qt',
+            user_id: 'BrEB12P3lMsZq-ixI',
+            template_params: {    
+                'to_name': `${res.name}`,
+                'email': `${res.email}`,
+                'email_subject': `Pending Withdrawal Alert`,
+                'message': `${message}`,
+            }
+        };
+
+        const sendMail= async()=>{
+            await Promise.all([fetch('https://api.emailjs.com/api/v1.0/email/send', {
+              method: 'POST',
+              headers:{
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(adminData), 
+          }),
+          await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+              method: 'POST',
+              headers:{
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(Data), 
+          })]
+          )
+        }
+          sendMail()
+
               Toast.fire({
                 icon: 'success',
                 title:  `You have successfully placed your withdrawal of ${res.withdraw}. kindly wait for few minutes to be approved by management,Thanks!`
@@ -57,6 +104,32 @@ const WithdrawReview = ({Active,withdrawAmount,closepage,route,funded}) => {
               setWallet('')
         }
         else{
+        const failedMsg = `We have received your withdrawal order, but you can only withdraw your profits within your 20 days of investment. keep investing to rack up more profits, thanks.`
+        const FailedData = {
+            service_id: 'service_w9veki7',
+            template_id: 'template_y66t3qt',
+            user_id: 'BrEB12P3lMsZq-ixI',
+            template_params: {    
+                'to_name': `${res.name}`,
+                'email': `${res.email}`,
+                'email_subject': `Failed Withdrawal Alert`,
+                'message': `${failedMsg}`,
+            }
+        };
+
+        const sendUserMail= async()=>{
+            const req = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+              method: 'POST',
+              headers:{
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(FailedData), 
+          })
+          const res = await req.json()
+          console.log(res)
+        }
+        sendUserMail()
+
               Toast.fire({
                 icon: 'warning',
                 title:  `${res.message}`

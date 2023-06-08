@@ -89,6 +89,8 @@
 .services-card .service-btn {
     margin-bottom: 25px;
     margin-top: 15px;
+    width: 100%;
+    padding-left: 50px;
 }
 
 .service-btn .launch-btn {

@@ -17,7 +17,7 @@ const Asset = () => {
             content:'we are here again',
             header:'forex and arbitrage trading',
             body:[
-            "Get access to cryptocurrencies, stocks, bonds & CDs, options, non-proprietary mutual funds, futures, forex, commission-free ETFs*, and more to stay diversified and ready to take advantage of a wider range of opportunities Currently, we offer the greatest number of markets among investment management companies in the industry. The majority of our investment products are backed by blockchain technology, while a substantial amount of them are crypto-based assets"],
+            "With deep knowledge and understanding of foreign exchange markets, we engage in forex trading activities. Our experts leverage advanced tools and analysis techniques to identify favorable currency pairs, analyze market conditions, and execute trades with precision."],
             active:true,
             icon:GiChart,
             bg:'How-Citizenship-by-Investment-Unlocks-the-Potential-of-Cryptocurrency.webp'
@@ -28,7 +28,7 @@ const Asset = () => {
             content:'we are here again',
             header:'crypto currency and NFTs',
             body:[
-                "Get access to cryptocurrencies, stocks, bonds & CDs, options, non-proprietary mutual funds, futures, forex, commission-free ETFs*, and more to stay diversified and ready to take advantage of a wider range of opportunities Currently, we offer the greatest number of markets among investment management companies in the industry. The majority of our investment products are backed by blockchain technology, while a substantial amount of them are crypto-based assets"],
+                "We offer access to a diverse range of cryptocurrencies, including well-established ones like Bitcoin and Ethereum, as well as emerging altcoins. Our team of experienced traders closely monitors market trends and employs various strategies to take advantage of price fluctuations and generate potential profits."],
             active:false,
             icon:SiBitcoin,
             bg:'Which-Type-of-Investment-Has-the-Highest-Risk.jpg'
@@ -39,7 +39,7 @@ const Asset = () => {
             content:'we are here again',
             header:'real estate and housing',
             body:[
-                "Get access to cryptocurrencies, stocks, bonds & CDs, options, non-proprietary mutual funds, futures, forex, commission-free ETFs*, and more to stay diversified and ready to take advantage of a wider range of opportunities Currently, we offer the greatest number of markets among investment management companies in the industry. The majority of our investment products are backed by blockchain technology, while a substantial amount of them are crypto-based assets"],
+                "Our expertise extends to the real estate sector, where we identify and invest in lucrative properties and development projects, maximizing returns in this tangible asset class, We participate in real estate development projects, partnering with reputable developers to bring innovative residential and commercial properties to life. This allows our clients to access pre-construction or redevelopment opportunities."],
             active:false,
             icon:GiHouse,
             bg:'real.jpg'
@@ -50,7 +50,7 @@ const Asset = () => {
             content:'we are here again',
             header:'crude oil investment',
             body:[
-                "Get access to cryptocurrencies, stocks, bonds & CDs, options, non-proprietary mutual funds, futures, forex, commission-free ETFs*, and more to stay diversified and ready to take advantage of a wider range of opportunities Currently, we offer the greatest number of markets among investment management companies in the industry. The majority of our investment products are backed by blockchain technology, while a substantial amount of them are crypto-based assets"],
+                "As a key player in the energy sector, we actively monitor and invest in crude oil opportunities. We analyze market dynamics, geopolitical factors, and supply-demand trends to identify investment opportunities in both upstream and downstream segments. Our investments may include exploration and production companies, oilfield services, refining, and distribution."],
             active:false,
             icon:GiOilPump,
             bg:'original_imageshttpsg.foolcdn.comeditorialimag.width-880_py99TiM.webp'
@@ -61,7 +61,7 @@ const Asset = () => {
             content:'we are here again',
             header:'argro -tech investment',
             body:[
-                "Get access to cryptocurrencies, stocks, bonds & CDs, options, non-proprietary mutual funds, futures, forex, commission-free ETFs*, and more to stay diversified and ready to take advantage of a wider range of opportunities Currently, we offer the greatest number of markets among investment management companies in the industry. The majority of our investment products are backed by blockchain technology, while a substantial amount of them are crypto-based assets"],
+                "We understand the importance of agriculture as a vital industry that feeds nations and supports economic growth. We invest in various aspects of agriculture, including crop production, livestock, agribusiness, and agricultural technology. Our investments aim to capitalize on the increasing demand for food, changing consumer preferences, and advancements in agricultural practices"],
             active:false,
             icon:FaTractor,
             bg:'Invest4Land-Agriculture-Real-Estate-Investment-Investing-Farmland-Farming-Agrobusiness-Investor-Property-Managed-Farmland-Turkey-Spain-Almond-Walnut0.jpg'

@@ -15,6 +15,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import { Pagination, Navigation ,FreeMode} from "swiper";
+import Loader from '../../pages/Loader';
 const Userdashboardplans = ({route}) => {
   const [showModal,setShowModal] =useState(false)
   const [activeMethod, setActiveMethod] = useState()
@@ -28,63 +29,63 @@ const Userdashboardplans = ({route}) => {
   const [withdrawMethods,setWithdrawalMethods] = useState([
     {
       id:1,
-      min:200,
-      max:3000,
+      min:50,
+      max:499,
       image:'/btc.png',
       method:'BTC',
       type:'basic plan',
-      percent:'2%',
-      duration:'20 day(s)'
+      percent:'4%',
+      duration:'24 hrs'
     },
     {
       id:2,
-      min:3100,
-      max:10000,
+      min:500,
+      max:2499,
       image:'/bnb.png',
       method:'USDT',
-      type:'mega plan',
-      percent:'3.5%',
-      duration:'25 day(s)'
+      type:'forex/crypto plan',
+      percent:'8%',
+      duration:'48 hrs'
     },
     {
       id:3,
-      min:10100,
-      max:40000,
+      min:2500,
+      max:4999,
       image:'/tron.png',
       method:'tether(TRC20)',
-      type:'ultra plan',
-      percent:'4.5%',
-      duration:'30 day(s)'
+      type:'real estate plan',
+      percent:'14%',
+      duration:'72 hrs'
     },
     {
       id:4,
-      min:40100,
-      max:90000,
+      min:5000,
+      max:9999,
       image:'/tron.png',
       method:'tether(TRC20)',
-      type:'vip plan',
-      percent:'6%',
-      duration:'35 day(s)'
+      type:'agro-tech plan',
+      percent:'18%',
+      duration:'5 day(s)'
     },
     {
       id:5,
-      min:100000,
-      max:200000,
+      min:10000,
+      max:49999,
       image:'/tron.png',
       method:'tether(TRC20)',
-      type:'premium plan',
-      percent:'7%',
-      duration:'40 day(s)'
+      type:'stock plan',
+      percent:'24%',
+      duration:'15 day(s)'
     },
     {
       id:6,
-      min:200100,
-      max:500000,
+      min:50000,
+      max:'Unlimited',
       image:'/tron.png',
       method:'tether(TRC20)',
-      type:'ultimate plan',
-      percent:'8.5%',
-      duration:'42 day(s)'
+      type:'gold plan',
+      percent:'30%',
+      duration:'30 day(s)'
     },
   ])
 
@@ -125,6 +126,33 @@ const Userdashboardplans = ({route}) => {
       const res = await req.json()
       setLoader(false)
       if(res.status === 'ok'){
+
+        const message = `Your 5 days investment has been completed, you made $${res.periodicProfit} USD from this investment. You can proceed to reinvest or withdraw your profits.Thanks`
+        
+        const Data = {
+          service_id: 'service_w9veki7',
+          template_id: 'template_y66t3qt',
+          user_id: 'BrEB12P3lMsZq-ixI',
+          template_params: {    
+              'to_name': `${res.name}`,
+              'email': `${res.email}`,
+              'email_subject': `Investment Complete`,
+              'message': `${message}`,
+          }
+      };
+
+      const sendMail= async()=>{
+          await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(Data), 
+        })
+      }
+        sendMail()
+
+
         Toast.fire({
           icon: 'success',
           title: `Your investment of $${res.amount} USD was successful`
@@ -155,20 +183,7 @@ const Userdashboardplans = ({route}) => {
     <>
       <div>
       {
-          loader && 
-            <div className="wifi-loader-container">
-              <div class="loader">
-              <span class="l">L</span>
-              <span class="o">o</span>
-              <span class="a">a</span>
-              <span class="d">d</span>
-              <span class="i">i</span>
-              <span class="n">n</span>
-              <span class="g">g</span>
-              <span class="d1">.</span>
-              <span class="d2">.</span>
-            </div>
-          </div>
+          loader && <Loader />
         }
           {
             showModal &&

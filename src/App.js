@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/iframe-has-title */
 import './App.css';
 import { Profiler, useEffect } from 'react';
 import { motion,AnimatePresence } from 'framer-motion';
@@ -98,7 +100,8 @@ function App() {
               title: `An Investor from ${myArray[Math.floor(Math.random() * num)].country} just withdrew ${myArray[Math.floor(Math.random() * num)].amount}...`
             })
     }, 600000);
-    const route = ''
+    // const route = ''
+    const route = 'http://localhost:5000'
   return (
     <>
     <AnimatePresence exitBeforeEnter>

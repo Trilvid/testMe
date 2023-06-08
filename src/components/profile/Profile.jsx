@@ -54,7 +54,7 @@ const Profile = ({route}) => {
     const formData = new FormData
     formData.append('file',file)
     formData.append('upload_preset','upload');
-    const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
+    const req = await fetch('https://api.cloudinary.com/v1_1/vdaaiifq/image/upload',
       {
       method:'POST',
       body:formData,

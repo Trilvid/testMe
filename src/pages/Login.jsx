@@ -15,6 +15,7 @@ const Login = ({route}) => {
   const [password,setPassword] = useState()
   const [loader, setLoader] = useState(false)
   const [check,setChecked] =  useState(false)
+  const [showDashboard,setShowDasboard] = useState(false)
   console.log(check)
 
   useEffect(()=>{
@@ -74,13 +75,23 @@ const Login = ({route}) => {
         }
         )
         const res = await req.json()
-          if (res.status === 'ok') {
+          if (res.status === 'ok' && res.role === 'user') {
             localStorage.setItem('token', res.user)
             Toast.fire({
               icon: 'success',
               title: 'Signed in successfully'
             })
             navigate('/dashboard')
+          } 
+         else if (res.role === 'admin') {
+  //       SetShowFoarm(false)
+        setShowDasboard(true)
+            // localStorage.setItem('token', res.user)
+            Toast.fire({
+              icon: 'success',
+              title: 'Admin Signed in successfully'
+            })
+            navigate('/admin')
           } 
           else if (res.status === 400) {
             setLoader(false)

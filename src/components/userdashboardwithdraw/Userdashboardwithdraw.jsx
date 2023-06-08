@@ -17,6 +17,7 @@ import { motion,AnimatePresence } from 'framer-motion'
 // import { Pagination, Navigation ,FreeMode} from "swiper";
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 const Userdashboardwithdraw = ({route}) => {
   const [loader,setLoader] = useState(false)
   const navigate = useNavigate()

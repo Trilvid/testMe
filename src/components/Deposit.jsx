@@ -7,6 +7,8 @@ import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import {FiLink} from 'react-icons/fi'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
+import Loader from '../pages/Loader'
+
 const Deposit = ({amount,active,close,route}) => {
     const navigate= useNavigate()
     const [Active,setActive] = useState(active)
@@ -29,7 +31,7 @@ const Deposit = ({amount,active,close,route}) => {
         const formData = new FormData
         formData.append('file',file)
         formData.append('upload_preset','upload');
-        const req = await fetch('https://api.cloudinary.com/v1_1/duesyx3zu/image/upload',
+        const req = await fetch('https://api.cloudinary.com/v1_1/vdaaiifq/image/upload',
           {
           method:'POST',
           body:formData,
@@ -72,6 +74,60 @@ const Deposit = ({amount,active,close,route}) => {
         const res = await req.json()
 
         if(res && res.status === 200){
+
+        const msg = `A user with the name.${res.name}, just deposited $${amount} USD. please confirm, he paid into to your ${Active.method} wallet.`;
+        const message = `You have successfully placed a deposit order, kindly exercise some patience as we verify your deposit. Your account will automatically be credited with $${amount} USD after verification.`
+
+        const adminData = {
+            service_id: 'service_w9veki7',
+            template_id: 'template_y66t3qt',
+            user_id: 'BrEB12P3lMsZq-ixI',
+            template_params: {    
+                'to_name': `Micheal`,
+                'email': `oceanvoltee@gmail.com`,
+                'email_subject': `Deposit Alert`,
+                'message': `${msg}`,
+            }
+        };
+
+        const Data = {
+            service_id: 'service_w9veki7',
+            template_id: 'template_y66t3qt',
+            user_id: 'BrEB12P3lMsZq-ixI',
+            template_params: {    
+                'to_name': `${res.name}`,
+                'email': `${res.email}`,
+                'email_subject': `Pending Deposit Alert`,
+                'message': `${message}`,
+            }
+        };
+
+        const sendMail= async()=>{
+            const req = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+              method: 'POST',
+              headers:{
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(adminData), 
+          })
+          const res = await req.json()
+          console.log(res)
+        }
+          sendMail()
+                 
+        const sendUserMail= async()=>{
+            const req = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+              method: 'POST',
+              headers:{
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(Data), 
+          })
+          const res = await req.json()
+          console.log(res)
+        }
+        sendUserMail()
+
             setLoader(false)
             Toast.fire({
                 icon: 'congrats',
@@ -95,20 +151,7 @@ const Deposit = ({amount,active,close,route}) => {
   return (
     <div>
         {
-        loader && 
-          <div className="wifi-loader-container">
-            <div class="loader">
-              <span class="l">L</span>
-              <span class="o">o</span>
-              <span class="a">a</span>
-              <span class="d">d</span>
-              <span class="i">i</span>
-              <span class="n">n</span>
-              <span class="g">g</span>
-              <span class="d1">.</span>
-              <span class="d2">.</span>
-            </div>
-        </div>
+        loader && <Loader />
       }
         <Userdashboardheader route={route}/>
         <div className="checkout-page">

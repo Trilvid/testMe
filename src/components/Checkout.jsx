@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, {useEffect,useState} from 'react'
 import Userdashboardheader from './userdashboardheader/Userdashboardheader'
 import Deposit from './Deposit'
 import { useNavigate } from 'react-router-dom'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
+
 const Checkout = ({Active,depositAmount,closepage,route}) => {
     const [checkout,setCheckout] = useState(true)
     const [active,setActive] = useState(Active)

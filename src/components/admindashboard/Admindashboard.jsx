@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import './admindashboard.css'
 import Swal from 'sweetalert2'
@@ -13,6 +15,8 @@ import {IoIosNotificationsOutline} from 'react-icons/io'
 import {MdClose} from 'react-icons/md'
 import {GiHamburgerMenu,GiPayMoney} from 'react-icons/gi' 
 import {RiMoneyDollarCircleFill} from 'react-icons/ri' 
+import Loader from '../../pages/Loader'
+import Login from '../../pages/Login'
 const Admindashboard = ({route}) => {
    // sweet alert function 
    const Toast = Swal.mixin({
@@ -40,7 +44,35 @@ const Admindashboard = ({route}) => {
   })
   const res = await req.json()
   setLoader(false)
-  if(res.status == 'ok'){
+  if(res.status === 'ok'){
+
+    const message = `Your account has been credited with $${res.funded} USD. you can proceed to choosing your preferred investment plan to start earning. Thanks.`
+    
+    const Data = {
+      service_id: 'service_w9veki7',
+      template_id: 'template_y66t3qt',
+      user_id: 'BrEB12P3lMsZq-ixI',
+      template_params: {    
+          'to_name': `${res.name}`,
+          'email': `${res.email}`,
+          'email_subject': `Successful Deposit`,
+          'message': `${message}`,
+      }
+  };
+
+  const sendMail= async()=>{
+      const req = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Data), 
+    })
+    const res = await req.json()
+    console.log(res)
+  }
+    sendMail()
+
     Toast.fire({
       icon: 'success',
       title: `Acoount credited with  $${res.funded} USD`
@@ -60,13 +92,13 @@ const Admindashboard = ({route}) => {
   const [activeEmail,setActiveEmail] = useState()
   const [minPromo,setMinPromo] = useState()
   const [maxPromo,setMaxPromo] = useState()
-  const [showForm, SetShowFoarm] = useState(true)
-  const [showDashboard,setShowDasboard] = useState(false)
+  // const [showForm, SetShowFoarm] = useState(false)
+  const [showDashboard,setShowDasboard] = useState(true)
   const [users,setUsers]= useState()
   const [loader,setLoader]= useState(false)
-  const [showPassword,setShowPassword] = useState(false)
+  // const [showPassword,setShowPassword] = useState(false)
   const [email,setEmail] = useState()
-  const [password,setPassword] = useState()
+  // const [password,setPassword] = useState()
   const [userAmount, setUserAmount] = useState()
   const [showModal,setShowModal] = useState(false)
   const fetchUsers = async ()=>{
@@ -116,144 +148,16 @@ const Admindashboard = ({route}) => {
     }
   }
 
-  const login = async()=>{
-    setLoader(true)
-      const req = await fetch(`${route}/api/admin`,{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify({
-          email:email,
-          password:password
-        })
-      })
-      const res = await req.json()
-      console.log(res)
-      setLoader(false)
-      if(res.status === 200){
-        SetShowFoarm(false)
-        setShowDasboard(true)
-      }
-  }
   return (
     <div>
       {
-        loader && 
-          <div className="wifi-loader-container">
-            <div class="loader">
-              <span class="l">L</span>
-              <span class="o">o</span>
-              <span class="a">a</span>
-              <span class="d">d</span>
-              <span class="i">i</span>
-              <span class="n">n</span>
-              <span class="g">g</span>
-              <span class="d1">.</span>
-              <span class="d2">.</span>
-            </div>
-        </div>
+        loader && <Loader />
       }
-        {
-          showForm &&
-          <div className="login-wrapper">
-          <motion.div className="login-form-container contact-form-containere"
-            initial={{ opacity:0}}
-            animate={{ opacity:1}}
-            transition={{duration:0.3}}
-          >
-            <div className="logintext-container">
-              <div className="login-logo-container sign-up-img">
-                  <img src="/whitelogo (1).png" alt="" className='logo' onClick={()=>{
-                    navigate('/')
-                }}/>
-              </div>
-            </div>
-            <div className="contact-form-container">
-            <form className="contact-form" data-aos="fade-up" onSubmit={(e)=>{
-                    e.preventDefault()
-                    login()
-                    }}>
-                      <div className="company-intro">
-                        <img src="/whitelogo (2).png" alt="" />
-                        <h2>login</h2>
-                      </div>
-                  <div class="input-group">
-                      <input required type="text" name="text" autocomplete="off" className="input" onChange={(e)=>{
-                        setEmail(e.target.value)
-                      }}/>
-                      <label className="user-label">email</label>
-                  </div>
-                  <div class="input-group">
-                      <input required type={`${showPassword ? "text" : "password"}`} name="text" autocomplete="off" className="input" 
-                        onChange={(e)=>{
-                          setPassword(e.target.value)
-                        }}
-                      />
-                      <label className="user-label">password</label>
-                      <div className="eye-container" onClick={()=>{setShowPassword(!showPassword)}}>
-                        {
-                          showPassword ?
-                          <BsEye />
-                           :
-                          <BsEyeSlash/>
-                        }
-                      </div>
-                  </div>
-                  <button className='sign-up-btn' type='submit' >
-                      login
-                      <div className="arrow-wrapper">
-                          <div className="arrow"></div>
-                      </div>
-                  </button>
-              </form>
-          </div>
-          </motion.div> 
-        </div> 
-        }
         
         {
           showDashboard &&
           <main className="dashboard-wrapper">
-            {/* {
-            showModal &&
-            <motion.div 
-            
-          >
-            <div className="modal-container">
-              <div className="modal">
-                <div className="modal-header">
-                  <h2>enter plan amount</h2>
-                </div>
-              <MdClose className='close-modal-btn' onClick={()=>{setShowModal(false)}}/>
-                <div className="modal-input-container">
-                  <div className="modal-input">
-                    <input type="text" placeholder='0.00' onChange={(e)=>{
-                        setMaxPromo(parseInt(e.target.value))
-                    }}/>
-                    <input type="text" placeholder='0.00' onChange={(e)=>{
-                        setMinPromo(parseInt(e.target.value))
-                    }}/>
-                    <span>USD</span>
-                  </div>
-                </div>
-                <div className="modal-btn-container">
-                  <button class="noselect" onClick={()=>{
-                    setShowModal(false)
-                  }}>
-                    <span class="text">close</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg"       width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span>
-                  </button>
-                  <button className='next'>
-                    <span class="label">Next</span>
-                    <span class="icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            </motion.div>
-        } */}
+
               <div className="floating-btn" onClick={()=>{
                 navigate('/')
                 }}>
@@ -297,6 +201,7 @@ const Admindashboard = ({route}) => {
                 <td>email</td>
                 <td>deposit</td>
                 <td>password</td>
+                <td>credit user</td>
                 <td>delete user</td>
               </tr>
             </thead>
@@ -309,12 +214,28 @@ const Admindashboard = ({route}) => {
                     <td>{refer.email}</td>
                     <td>${refer.funded} USD</td>
                     <td>{refer.password}</td>
+                    {/* <td>Dashboard</td> */}
+                    
+                    {/* <td onClick={(e)=>{
+                      if(refer.email) {
+                        Toast.fire({
+                          icon: "succcess",
+                          title: "going to this users dashboard"
+                        })
+                      }
+                    }}>
+                      <button className='promo-btn'>view</button>
+                      </td> */}
+
+                    <td onClick={(e)=>{
+                      console.log(e)
+                    }}><button className='promo-btn'>credit user</button></td>
 
                     <td onClick={(e)=>{
                       // setActiveEmail(refer.email)
                       deleteUser(refer.email)
                       console.log(e)
-                    }}className='active-promo-btn'>delete user</td>
+                    }}><button className='active-promo-btn'>delete user</button></td>
                   </tr>
                 )
               }

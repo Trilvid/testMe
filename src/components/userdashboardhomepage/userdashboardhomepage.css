@@ -1,5 +1,6 @@
 .homewrapper{
     width: 100%;
+    background-color: #f2f2f2;
 }
 .dashboardhomepage{
     width: 100%;
@@ -26,6 +27,7 @@
 .welcome-kyc-section p{
     width: 100%;
     color: rgb(134, 146, 167);
+    color: var(--color-variant);
 }
 .username-container{
     display: flex;
