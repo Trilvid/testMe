@@ -101,7 +101,7 @@ function App() {
             })
     }, 600000);
     // const route = ''
-    const route = 'http://localhost:5000'
+    const route = 'https://vast-gilet-fly.cyclic.app'
   return (
     <>
     <div className="iframe-container">
