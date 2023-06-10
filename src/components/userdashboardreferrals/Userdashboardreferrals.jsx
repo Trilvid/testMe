@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import {MdOutlineContentCopy} from 'react-icons/md'
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 import './userdashboardreferrals.css'
+import Loader from '../../pages/Loader'
 const Userdashboardreferrals = ({route}) => {
   const [clipBoard, setClipBoard] = useState(false)
   const [loader,setLoader] = useState(false)
@@ -36,20 +37,7 @@ const Userdashboardreferrals = ({route}) => {
     <div>
         <Userdashboardheader route={route}/>
         {
-        loader && 
-          <div className="wifi-loader-container">
-            <div class="loader">
-              <span class="l">L</span>
-              <span class="o">o</span>
-              <span class="a">a</span>
-              <span class="d">d</span>
-              <span class="i">i</span>
-              <span class="n">n</span>
-              <span class="g">g</span>
-              <span class="d1">.</span>
-              <span class="d2">.</span>
-            </div>
-        </div>
+        loader && <Loader />
       }
           {userData && userData.referred.length !== 0 ? 
           <div className="page-swiper-wrapper">

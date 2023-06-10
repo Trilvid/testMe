@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
+import Loader from '../../pages/Loader'
 const Userdashboardtransactions = ({route}) => {
 
   const navigate = useNavigate()
@@ -35,20 +36,7 @@ const Userdashboardtransactions = ({route}) => {
       
     <Userdashboardheader route={route}/>
     {
-        loader && 
-          <div className="wifi-loader-container">
-            <div class="loader">
-              <span class="l">L</span>
-              <span class="o">o</span>
-              <span class="a">a</span>
-              <span class="d">d</span>
-              <span class="i">i</span>
-              <span class="n">n</span>
-              <span class="g">g</span>
-              <span class="d1">.</span>
-              <span class="d2">.</span>
-            </div>
-        </div>
+        loader && <Loader />
       }
       {userData && userData.transaction.length !== 0 ? 
       <div className="page-swiper-wrapper">

@@ -140,3 +140,10 @@
   .plan .button:hover, .plan .button:focus {
     background-color: #4133B7;
   }
+
+  @media (max-width: 640px) {
+    .plan{
+        width: 100%;
+        max-width: 350px;
+    }
+  }
