@@ -171,8 +171,7 @@ const Admindashboard = ({route}) => {
         <div class="actions">
           <button class="desactivate" type="button" onClick={(e)=>{
                         //  setActiveEmail(refer.email)
-                        //  deleteUser(email)
-                         console.log(e)
+                        deleteUser(email)
                          console.log(email)
                        }}>Deactivate</button>
           <button class="cancel" type="button" onClick={(e) => {
