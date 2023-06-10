@@ -452,6 +452,7 @@ button {
 }
 .wifi-loader-container{
   position: fixed;
+  top: 0;
   width: 100%;
   height: 100vh;
   background-color: rgb(255, 255, 255);

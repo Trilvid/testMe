@@ -16,12 +16,25 @@ import "swiper/css/navigation";
 import "swiper/css/free-mode";
 import { Pagination, Navigation ,FreeMode} from "swiper";
 import Loader from '../../pages/Loader';
+
 const Userdashboardplans = ({route}) => {
   const [showModal,setShowModal] =useState(false)
-  const [activeMethod, setActiveMethod] = useState()
   const [checkoutPage,setCheckoutPage] = useState(false)
-  const [amount,setAmount] = useState()
   const [loader,setLoader] = useState(false)
+  const [activeMethod, setActiveMethod] = useState()
+  const [amount,setAmount] = useState('')
+
+  const [duration, setDuration] = useState()
+  const [percent, setPercent] = useState()
+  const [plan, setPlan] = useState('')
+  const [min, setMin] = useState('')
+  const [max, setMax] = useState('')
+
+  // const duration = activeMethod.duration
+  // const percent = activeMethod.percent
+  // const plan = activeMethod.plan
+  // const max = activeMethod.max
+  // const min = activeMethod.min
 
 
   const navigate = useNavigate()
@@ -120,14 +133,15 @@ const Userdashboardplans = ({route}) => {
           min:parseInt(activeMethod.min),
           max:parseInt(activeMethod.max),
           plan:activeMethod.plan,
-          duration:activeMethod.duration
+          duration: activeMethod.duration
         })
       })
       const res = await req.json()
       setLoader(false)
       if(res.status === 'ok'){
+        // sending email
 
-        const message = `Your 5 days investment has been completed, you made $${res.periodicProfit} USD from this investment. You can proceed to reinvest or withdraw your profits.Thanks`
+        const message = `Your {{ activeMethod.duration }} days investment has been completed, you made $${res.periodicProfit} USD from this investment. You can proceed to reinvest or withdraw your profits.Thanks`
         
         const Data = {
           service_id: 'service_w9veki7',
@@ -174,7 +188,7 @@ const Userdashboardplans = ({route}) => {
       else{
         Toast.fire({
           icon: 'error',
-          title: ` ${res.error}`
+          title: ` ${res.message}`
         })
       }
   }
@@ -207,6 +221,7 @@ const Userdashboardplans = ({route}) => {
                     <input type="text" placeholder='0.00' onChange={(e)=>{
                         setAmount(parseInt(e.target.value))
                     }}/>
+
                     <span>USD</span>
                   </div>
                 </div>
@@ -214,7 +229,7 @@ const Userdashboardplans = ({route}) => {
                   <button class="noselect" onClick={()=>{
                     setShowModal(false)
                   }}>
-                    <span class="text">close</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg"       width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span>
+                    <span class="text">close</span><span class="icont"><svg xmlns="http://www.w3.org/2000/svg"       width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span>
                   </button>
                   <button className='next' onClick={()=>{
                     if(amount < activeMethod.min){
@@ -300,11 +315,11 @@ const Userdashboardplans = ({route}) => {
                         <RxDash />
                         <p>{withdrawmethod.percent}</p>
                       </div>
-                      <div className="investrange-card invest-card">
+                      {/* <div className="investrange-card invest-card">
                         <p>daily profit every 5 days</p>
                         <RxDash />
                         <p></p>
-                      </div>
+                      </div> */}
                       <div className="investrange-card invest-card">
                         <p>referral bonus</p>
                         <RxDash />

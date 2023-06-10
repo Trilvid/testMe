@@ -17,6 +17,7 @@ import { motion,AnimatePresence } from 'framer-motion'
 // import { Pagination, Navigation ,FreeMode} from "swiper";
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../pages/Loader';
 
 const Userdashboardwithdraw = ({route}) => {
   const [loader,setLoader] = useState(false)
@@ -65,7 +66,7 @@ const Userdashboardwithdraw = ({route}) => {
       id:3,
       min:10,
       max:1000,
-      image:'/bnb.png',
+      image:'/tron.png',
       method:'BNB (bep20)',
     },
   ])
@@ -91,20 +92,7 @@ const Userdashboardwithdraw = ({route}) => {
   return (
     <>
       {
-        loader && 
-          <div className="wifi-loader-container">
-            <div class="loader">
-              <span class="l">L</span>
-              <span class="o">o</span>
-              <span class="a">a</span>
-              <span class="d">d</span>
-              <span class="i">i</span>
-              <span class="n">n</span>
-              <span class="g">g</span>
-              <span class="d1">.</span>
-              <span class="d2">.</span>
-            </div>
-        </div>
+        loader && <Loader />
       }
     {
       !checkoutPage &&

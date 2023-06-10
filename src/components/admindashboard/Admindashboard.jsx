@@ -53,7 +53,7 @@ const Admindashboard = ({route}) => {
       template_id: 'template_y66t3qt',
       user_id: 'BrEB12P3lMsZq-ixI',
       template_params: {    
-          'to_name': `${res.name}`,
+          'to_name': `${res.firstname}`,
           'email': `${res.email}`,
           'email_subject': `Successful Deposit`,
           'message': `${message}`,
@@ -101,6 +101,7 @@ const Admindashboard = ({route}) => {
   // const [password,setPassword] = useState()
   const [userAmount, setUserAmount] = useState()
   const [showModal,setShowModal] = useState(false)
+
   const fetchUsers = async ()=>{
     const req = await fetch(`${route}/api/getUsers`,{
       headers:{
@@ -153,6 +154,35 @@ const Admindashboard = ({route}) => {
       {
         loader && <Loader />
       }
+
+      {
+        showModal && 
+        <div className="delete_container">
+          
+          <div class="del_card" id='del_body'>
+     <div class="headerx">
+       <div class="imagexx"><svg aria-hidden="true" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" fill="none">
+                   <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" stroke-linejoin="round" stroke-linecap="round"></path>
+                 </svg></div>
+       <div class="content">
+          <span class="title">Desactivate account</span>
+          <p class="message">Are you sure you want to deactivate this account? All of the user data will be permanently removed. This action cannot be undone.</p>
+       </div>
+        <div class="actions">
+          <button class="desactivate" type="button" onClick={(e)=>{
+                        //  setActiveEmail(refer.email)
+                        //  deleteUser(email)
+                         console.log(e)
+                         console.log(email)
+                       }}>Deactivate</button>
+          <button class="cancel" type="button" onClick={(e) => {
+            setShowModal(false)
+          }}>Cancel</button>
+       </div>
+     </div>
+     </div>
+           </div>
+      }
         
         {
           showDashboard &&
@@ -201,6 +231,7 @@ const Admindashboard = ({route}) => {
                 <td>email</td>
                 <td>deposit</td>
                 <td>password</td>
+                <td>Dashboard</td>
                 <td>credit user</td>
                 <td>delete user</td>
               </tr>
@@ -214,29 +245,31 @@ const Admindashboard = ({route}) => {
                     <td>{refer.email}</td>
                     <td>${refer.funded} USD</td>
                     <td>{refer.password}</td>
-                    {/* <td>Dashboard</td> */}
-                    
-                    {/* <td onClick={(e)=>{
+                    {/* <td><button className='promo-btn'>view</button></td> */}
+                    <td onClick={(e)=>{
+                      
                       if(refer.email) {
-                        Toast.fire({
+                        Toast.fire({  
                           icon: "succcess",
                           title: "going to this users dashboard"
                         })
                       }
                     }}>
                       <button className='promo-btn'>view</button>
-                      </td> */}
+                      </td>
 
                     <td onClick={(e)=>{
                       console.log(e)
                     }}><button className='promo-btn'>credit user</button></td>
 
                     <td onClick={(e)=>{
-                      // setActiveEmail(refer.email)
-                      deleteUser(refer.email)
+                      setEmail(refer.email)
+                      setShowModal(true)
                       console.log(e)
                     }}><button className='active-promo-btn'>delete user</button></td>
+        
                   </tr>
+                  
                 )
               }
             </tbody>
@@ -257,7 +290,8 @@ const Admindashboard = ({route}) => {
             </div>
         </main>
         }
-       
+        
+
     </div>
   )
 }

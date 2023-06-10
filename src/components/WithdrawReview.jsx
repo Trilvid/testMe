@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import Userdashboardheader from './userdashboardheader/Userdashboardheader'
 import './userdashboardwithdraw/userdashboardwithdraw.css'
 import {AiOutlineArrowLeft} from 'react-icons/ai'
+import Loader from '../pages/Loader'
 const WithdrawReview = ({Active,withdrawAmount,closepage,route,funded}) => {
     const [active,setActive] = useState(Active)
     const [wallet,setWallet] = useState()
@@ -141,20 +142,7 @@ const WithdrawReview = ({Active,withdrawAmount,closepage,route,funded}) => {
     <div>
         <Userdashboardheader route={route}/>
         {
-        loader && 
-          <div className="wifi-loader-container">
-            <div class="loader">
-              <span class="l">L</span>
-              <span class="o">o</span>
-              <span class="a">a</span>
-              <span class="d">d</span>
-              <span class="i">i</span>
-              <span class="n">n</span>
-              <span class="g">g</span>
-              <span class="d1">.</span>
-              <span class="d2">.</span>
-            </div>
-        </div>
+        loader && <Loader />
       }
         <div className="checkout-page">
         <div className="floating-btn" onClick={()=>{

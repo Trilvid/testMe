@@ -5,7 +5,7 @@
     justify-content: space-between;
     padding: 5px 10px;
     position: sticky;
-    top: 0;
+    top: 36px;
     left: 0;
     z-index: 2;
     height: 60px;
@@ -85,7 +85,7 @@
 .drop-down{
     position: fixed;
     right: 2px;
-    top: 10px;
+    top: 36px;
     padding: 0px 0px 10px 0px;
     width: 280px;
     background-color: white;
@@ -206,7 +206,7 @@
 }
 .scroll-head{
     position: fixed;
-    top: 0;
+    top: 36px;
     left: 0;
     box-shadow: 0px 3px 10px #ddd;
     z-index: 4;

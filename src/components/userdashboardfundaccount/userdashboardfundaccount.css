@@ -227,10 +227,10 @@
     font-weight: bold;
    }
    
-   .noselect .icon {
+   .noselect .icont {
     position: absolute;
     border-left: 1px solid #c41b1b;
-    transform: translateX(110px);
+    transform: translateX(120px);
     height: 40px;
     width: 40px;
     display: flex;
@@ -245,13 +245,14 @@
    
    .noselect:hover {
     background: #ff3636;
+    fill: #000;
    }
    
    .noselect:hover .text {
     color: transparent;
    }
    
-   .noselect:hover .icon {
+   .noselect:hover .icont {
     width: 120px;
     border-left: none;
     transform: translateX(0);
@@ -261,7 +262,7 @@
     outline: none;
    }
    
-   .noselect:active .icon svg {
+   .noselect:active .icont svg {
     transform: scale(0.8);
    }
 .next {
