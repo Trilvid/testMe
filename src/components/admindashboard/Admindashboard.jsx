@@ -99,7 +99,7 @@ const Admindashboard = ({route}) => {
   const [email,setEmail] = useState()
   const [userAmount, setUserAmount] = useState()
   const [showModal,setShowModal] = useState(false)
-  const [showCreditModal, setShowCreditModal] = useState(true)
+  const [showCreditModal, setShowCreditModal] = useState(false)
   // const [password,setPassword] = useState()
   // const [showForm, SetShowFoarm] = useState(false)
   // const [showPassword,setShowPassword] = useState(false)
@@ -171,7 +171,9 @@ showCreditModal &&
                     <input type="text" placeholder='0.00' onChange={(e)=>{
                       setUserAmount(parseInt(e.target.value))
                     }}/>
-                    <input type="hidden" value={email} />
+                     <input type="hidden" name='text' onChange={(e) => {
+                      setEmail(e.target.value)
+                     }} />
                     <span>USD</span>
                   </div>
                 </div>
