@@ -182,19 +182,17 @@ nav ul li a {
         display: none;
     }
     .logo-container{
-        width: 60%;
+        width: 40%;
         padding-left: 0px;
         overflow-y: hidden;
+        justify-content: flex-start;
     }
     .logo{
-        /* margin-top: 5px;
-        margin-left: 10px; */
         object-fit: cover;
-        width: 100px;
-        border: 1px solid red;
+        width: 100%;
         margin: 0;
     }
     header{
-        height: 80px;
+        height: 60px;
     }
 }
