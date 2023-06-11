@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import Userdashboardheader from '../userdashboardheader/Userdashboardheader'
 import {FiArrowRight} from 'react-icons/fi'
@@ -104,7 +105,7 @@ const Userdashboardfundaccount = ({route}) => {
                     if(depositAmount >= activeMethod.min){
                       setCheckoutPage(true)
                     }
-                    else if(depositAmount === NaN){
+                    else if(depositAmount === isNaN){
                       Toast.fire({
                         icon: 'warning',
                         title: 'only numbers are accepted'
