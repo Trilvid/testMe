@@ -171,7 +171,7 @@ const Admindashboard = ({route}) => {
         <div class="actions">
           <button class="desactivate" type="button" onClick={(e)=>{
                         //  setActiveEmail(refer.email)
-                        deleteUser(email)
+                        deleteUser(activeEmail)
                          console.log(email)
                        }}>Deactivate</button>
           <button class="cancel" type="button" onClick={(e) => {
@@ -262,7 +262,7 @@ const Admindashboard = ({route}) => {
                     }}><button className='promo-btn'>credit user</button></td>
 
                     <td onClick={(e)=>{
-                      setEmail(refer.email)
+                      setActiveEmail(refer.email)
                       setShowModal(true)
                       console.log(e)
                     }}><button className='active-promo-btn'>delete user</button></td>
