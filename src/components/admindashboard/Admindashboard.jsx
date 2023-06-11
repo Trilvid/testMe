@@ -54,7 +54,7 @@ const Admindashboard = ({route}) => {
       template_id: 'template_y66t3qt',
       user_id: 'BrEB12P3lMsZq-ixI',
       template_params: {    
-          'to_name': `${res.firstname}`,
+          'to_name': `${res.name}`,
           'email': `${res.email}`,
           'email_subject': `Successful Deposit`,
           'message': `${message}`,
@@ -183,6 +183,7 @@ showCreditModal &&
                   </button>
                   <button className='next' onClick={()=>{
                     creditUser()
+                    setShowCreditModal(false)
                   }}>
                     <span class="label">Next</span>
                     <span class="icon">
@@ -293,10 +294,6 @@ showCreditModal &&
                     }}><button className='promo-btn'>credit user</button></td>
 
                     <td onClick={(e)=>{
-<<<<<<< HEAD
-=======
-                      setActiveEmail(refer.email)
->>>>>>> refs/remotes/origin/main
                       setShowModal(true)
                       setActiveEmail(refer.email)
                       console.log(e)
