@@ -209,9 +209,10 @@ showCreditModal &&
           <p class="message">Are you sure you want to deactivate this account? All of the user data will be permanently removed. This action cannot be undone.</p>
        </div>
         <div class="actions">
-          <button class="desactivate" type="button" onClick={()=>{
-                         deleteUser(activeEmail)
-                         console.log(activeEmail)
+          <button class="desactivate" type="button" onClick={(e)=>{
+                        //  setActiveEmail(refer.email)
+                        deleteUser(activeEmail)
+                         console.log(email)
                        }}>Deactivate</button>
           <button class="cancel" type="button" onClick={() => {
             setShowModal(false)
@@ -292,6 +293,10 @@ showCreditModal &&
                     }}><button className='promo-btn'>credit user</button></td>
 
                     <td onClick={(e)=>{
+<<<<<<< HEAD
+=======
+                      setActiveEmail(refer.email)
+>>>>>>> refs/remotes/origin/main
                       setShowModal(true)
                       setActiveEmail(refer.email)
                       console.log(e)
