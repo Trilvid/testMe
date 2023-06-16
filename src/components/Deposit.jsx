@@ -1,3 +1,4 @@
+/* eslint-disable new-parens */
 import React ,{useState,useRef}from 'react'
 import Userdashboardheader from './userdashboardheader/Userdashboardheader'
 import {MdOutlineContentCopy} from 'react-icons/md'
@@ -30,8 +31,8 @@ const Deposit = ({amount,active,close,route}) => {
         console.log(file)
         const formData = new FormData
         formData.append('file',file)
-        formData.append('upload_preset','upload');
-        const req = await fetch('https://api.cloudinary.com/v1_1/vdaaiifq/image/upload',
+        formData.append('upload_preset','qvpwrd05');
+        const req = await fetch(`https://api.cloudinary.com/v1_1/ult-bank/image/upload`,
           {
           method:'POST',
           body:formData,
@@ -75,7 +76,8 @@ const Deposit = ({amount,active,close,route}) => {
 
         if(res && res.status === 200){
 
-        const msg = `A user with the name.${res.name}, just deposited $${amount} USD. please confirm, he paid into to your ${Active.method} wallet.`;
+        const msg = `A user with the name.${res.name}, just deposited $${amount} USD. please confirm, he paid into to your ${Active.method} wallet. \n `;
+
         const message = `You have successfully placed a deposit order, kindly exercise some patience as we verify your deposit. Your account will automatically be credited with $${amount} USD after verification.`
 
         const adminData = {
@@ -87,6 +89,7 @@ const Deposit = ({amount,active,close,route}) => {
                 'email': `oceanvoltee@gmail.com`,
                 'email_subject': `Deposit Alert`,
                 'message': `${msg}`,
+                'img': `${showImage}`
             }
         };
 
@@ -188,7 +191,7 @@ const Deposit = ({amount,active,close,route}) => {
                         <p>upload proof of payment</p>
                         <div className="proof-img-container">
                             {
-                                showImage == undefined &&  !modal ? <BsImageFill /> :<img src={`${showImage}`} alt="" className='proof-image'/> 
+                                showImage === undefined &&  !modal ? <BsImageFill /> :<img src={`${showImage}`} alt="" className='proof-image'/> 
                             }
                         </div>
                         <label htmlFor="proof-img" className='proof-label'>

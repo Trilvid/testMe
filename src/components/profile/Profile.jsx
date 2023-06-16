@@ -1,3 +1,4 @@
+/* eslint-disable new-parens */
 import React ,{useState,useEffect,useRef} from 'react'
 import { useNavigate } from 'react-router-dom'
 import './profile.css'
@@ -50,11 +51,13 @@ const Profile = ({route}) => {
 
   // upload proof image code starts here 
   const [showImage,setShowImage]= useState() 
+  // const cloudName = 'oceanvolte'
   const uploadProof = async (file)=>{
     const formData = new FormData
     formData.append('file',file)
-    formData.append('upload_preset','upload');
-    const req = await fetch('https://api.cloudinary.com/v1_1/vdaaiifq/image/upload',
+    formData.append('upload_preset','qvpwrd05');
+    // 'https://api.cloudinary.com/v1_1/vdaaiifq/image/upload'
+    const req = await fetch(`https://api.cloudinary.com/v1_1/ult-bank/image/upload`,
       {
       method:'POST',
       body:formData,
@@ -148,11 +151,11 @@ const Profile = ({route}) => {
                 <div className="first-input-container">
                   <div className="profile-input-container">
                     <label htmlFor="firstname" className='label'>firstname</label>
-                    <input type="text" id='firstname'  placeHolder={userData ? userData.firstname : ''} ref={firstnameRef}/>
+                    <input type="text" id='firstname'  placeHolder={userData ? userData.firstname : ''} ref={firstnameRef} value={userData.firstname} readOnly/>
                   </div>
                   <div className="profile-input-container">
                     <label htmlFor="lastname" className='label'>lastname</label>
-                    <input type="text" id='lastname' placeHolder={userData ? userData.lastname : ''}/>
+                    <input type="text" id='lastname' placeHolder={userData ? userData.lastname : ''} value={userData.lastname} readOnly/>
                   </div>
                   <div className="profile-input-container">
                     <label htmlFor="email" className='label'>email</label>

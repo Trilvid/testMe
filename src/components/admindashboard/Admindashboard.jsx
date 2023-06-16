@@ -16,7 +16,7 @@ import {MdClose} from 'react-icons/md'
 import {GiHamburgerMenu,GiPayMoney} from 'react-icons/gi' 
 import {RiMoneyDollarCircleFill} from 'react-icons/ri' 
 import Loader from '../../pages/Loader'
-import Login from '../../pages/Login'
+
 const Admindashboard = ({route}) => {
    // sweet alert function 
    const Toast = Swal.mixin({
@@ -211,8 +211,8 @@ showCreditModal &&
        </div>
         <div class="actions">
           <button class="desactivate" type="button" onClick={(e)=>{
-                        //  setActiveEmail(refer.email)
                         deleteUser(activeEmail)
+                        setShowModal(false)
                          console.log(email)
                        }}>Deactivate</button>
           <button class="cancel" type="button" onClick={() => {
@@ -238,29 +238,6 @@ showCreditModal &&
               <h2>Users logs</h2>
               <p>we keep track of all users info</p>
             </div>
-{/* 
-              <div className='credit-form-container'>
-                <form className="credit-form" onSubmit={(e)=>{
-                  e.preventDefault()
-                  if(email !== undefined && userAmount !== undefined){
-                    creditUser()
-                  }
-                  else{
-                    Toast.fire({
-                      icon: 'error',
-                      title: `fill the required fields `
-                    })
-                  }
-                }}>
-                  <input type="email" name="" id="" className='my-input' required placeholder='enter user email' onChange={(e)=>{
-                    setEmail(e.target.value)
-                  }} value={email}/>
-                  <input type="text" name="" id="" className='my-input' required placeholder='enter amount to credit user' onChange={(e)=>{
-                    setUserAmount(parseInt(e.target.value))
-                  }} value={userAmount}/>
-                  <input type="submit" value="credit user" className='credi-user'/>
-                </form>
-            </div> */}
             
             {users && users.length !== 0 ? 
       <div className="page-swiper-wrapper">

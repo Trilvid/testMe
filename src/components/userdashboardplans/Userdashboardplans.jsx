@@ -141,30 +141,30 @@ const Userdashboardplans = ({route}) => {
       if(res.status === 'ok'){
         // sending email
 
-        const message = `Your {{ activeMethod.duration }} days investment has been completed, you made $${res.periodicProfit} USD from this investment. You can proceed to reinvest or withdraw your profits.Thanks`
+      //   const message = `Your ${ activeMethod.duration } days investment has been completed, you made $${res.periodicProfit} USD from this investment. You can proceed to reinvest or withdraw your profits.Thanks`
         
-        const Data = {
-          service_id: 'service_w9veki7',
-          template_id: 'template_y66t3qt',
-          user_id: 'BrEB12P3lMsZq-ixI',
-          template_params: {    
-              'to_name': `${res.name}`,
-              'email': `${res.email}`,
-              'email_subject': `Investment Complete`,
-              'message': `${message}`,
-          }
-      };
+      //   const Data = {
+      //     service_id: 'service_w9veki7',
+      //     template_id: 'template_y66t3qt',
+      //     user_id: 'BrEB12P3lMsZq-ixI',
+      //     template_params: {    
+      //         'to_name': `${res.name}`,
+      //         'email': `${res.email}`,
+      //         'email_subject': `Investment Complete`,
+      //         'message': `${message}`,
+      //     }
+      // };
 
-      const sendMail= async()=>{
-          await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-            method: 'POST',
-            headers:{
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(Data), 
-        })
-      }
-        sendMail()
+      // const sendMail= async()=>{
+      //     await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      //       method: 'POST',
+      //       headers:{
+      //         'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify(Data), 
+      //   })
+      // }
+      //   sendMail()
 
 
         Toast.fire({
@@ -294,8 +294,8 @@ const Userdashboardplans = ({route}) => {
                         <p>everyday</p>
                       </span>
                       <span className="small-plan-head">
-                        <h3>5</h3>
-                        <p>days</p>
+                        <h3>{withdrawmethod.duration}</h3>
+                        <p>time</p>
                       </span>
                     </div>
                   </div>

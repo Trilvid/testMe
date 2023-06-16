@@ -26,7 +26,7 @@ const VerifyEmail = ({route}) => {
     },[params])
   return (
     <>
-    <Header />
+    <Header style={{background: 'red'}}/>
     <div>
         {
             validUrl ? 

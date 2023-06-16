@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React from 'react'
 import './userdashboardhomepage.css'
 import {BsArrowRightShort} from 'react-icons/bs'
@@ -72,15 +73,15 @@ const Userdashboardhomepage = ({route}) => {
                         <h2>current deposit</h2>
                         <h3>${userData && userData.deposit.length !== 0 ? userData.deposit[userData.deposit.length - 1].amount : 0}.00 USD</h3>
                     </div>
-                    <div className="amount-pouches">
+                    {/* <div className="amount-pouches">
                         <h2>invested</h2>
                         <h3>$ {userData && userData.invest.length !== 0 ? userData.invest[userData.invest.length - 1].amount : 0}.00 USD</h3>
-                    </div>
+                    </div> */}
                     <img src="/bar.png" alt="" className="bar"/>
                 </div>
                 <div className="overview-card">
                 <div className="amount-header">
-                        <h2>Total Withdraw</h2>
+                        <h2>Total Withdrawal</h2>
                         <div className="amount-holder">
                             <h3>${userData ? userData.totalwithdraw : ''}.00 USD </h3>
                             <span className="red">
@@ -93,10 +94,10 @@ const Userdashboardhomepage = ({route}) => {
                         <h2>interest earned</h2>
                         <h3>${userData ? userData.periodicProfit : '0'}.00 USD</h3>
                     </div>
-                    <div className="amount-pouches">
+                    {/* <div className="amount-pouches">
                         <h2>bonus</h2>
                         <h3>${userData ? userData.refBonus : '0'}.00 USD</h3>
-                    </div>
+                    </div> */}
                     <img src="/bar2.png" alt="" className="bar" />
                 </div>
                 <div className="overview-card">
@@ -107,10 +108,10 @@ const Userdashboardhomepage = ({route}) => {
                             
                         </div>
                     </div>
-                    <div className="amount-pouches">
+                    {/* <div className="amount-pouches">
                         <h2>from deposits</h2>
                         <h3>${userData ? userData.totaldeposit : ''}.00 USD</h3>
-                    </div>
+                    </div> */}
                     <div className="amount-pouches">
                         <h2>from profits</h2>
                         <h3>${userData ? userData.totalprofit + userData.refBonus : ''}.00 USD</h3>
