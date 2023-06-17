@@ -295,7 +295,7 @@ const Userdashboardplans = ({route}) => {
                       </span>
                       <span className="small-plan-head">
                         <h3>{withdrawmethod.duration}</h3>
-                        <p>time</p>
+                        <p>duration</p>
                       </span>
                     </div>
                   </div>
