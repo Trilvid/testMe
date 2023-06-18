@@ -370,8 +370,8 @@ const Userdashboardplans = ({route}) => {
                         <p>everyday</p>
                       </span>
                       <span className="small-plan-head">
-                        <h3>5</h3>
-                        <p>days</p>
+                        <h3>{withdrawmethod.duration}</h3>
+                        <p>duration</p>
                       </span>
                     </div>
                   </div>
