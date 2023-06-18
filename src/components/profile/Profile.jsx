@@ -151,11 +151,11 @@ const Profile = ({route}) => {
                 <div className="first-input-container">
                   <div className="profile-input-container">
                     <label htmlFor="firstname" className='label'>firstname</label>
-                    <input type="text" id='firstname'  placeHolder={userData ? userData.firstname : ''} ref={firstnameRef} value={userData.firstname} readOnly/>
+                    <input type="text" id='firstname'  placeHolder={userData ? userData.firstname : ''} ref={firstnameRef} value={userData ? userData.firstname : ''} readOnly/>
                   </div>
                   <div className="profile-input-container">
                     <label htmlFor="lastname" className='label'>lastname</label>
-                    <input type="text" id='lastname' placeHolder={userData ? userData.lastname : ''} value={userData.lastname} readOnly/>
+                    <input type="text" id='lastname' placeHolder={userData ? userData.lastname : ''} value={userData ? userData.lastname : ''} readOnly/>
                   </div>
                   <div className="profile-input-container">
                     <label htmlFor="email" className='label'>email</label>
