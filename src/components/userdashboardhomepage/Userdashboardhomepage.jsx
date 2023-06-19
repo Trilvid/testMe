@@ -135,7 +135,7 @@ const Userdashboardhomepage = ({route}) => {
                         <button className='clipboard-btn'>
                             <FiLink />
                         </button>
-                        <input type="text" value={userData ? userData.referral : ''} ref={clipRef}/>
+                        <input type="text" value={userData ? `oceanvolte.com/${userData.referral} `: ''} ref={clipRef}/>
                         <button className={`clipboard-btn ${clipBoard ? 'copied' : ''}` } onClick={()=>{
                             copy()
                             setClipBoard(!clipBoard)

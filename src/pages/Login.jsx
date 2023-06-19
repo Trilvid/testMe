@@ -201,7 +201,7 @@ const Login = ({route}) => {
   type="checkbox" 
   name="text" 
   id="remeberme" 
-  value={check}
+  value={true}
   onChange={(e) => {
     setChecked(e.target.value)
     }} />

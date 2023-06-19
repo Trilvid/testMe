@@ -23,6 +23,7 @@
     justify-content: flex-start;
     flex-direction: column;
     text-align: left;
+    /* border: 1px solid red; */
 }
 .welcome-kyc-section p{
     width: 100%;
