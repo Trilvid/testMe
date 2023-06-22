@@ -100,7 +100,9 @@ const Admindashboard = ({route}) => {
   const [userAmount, setUserAmount] = useState()
   const [showModal,setShowModal] = useState(false)
   const [showCreditModal, setShowCreditModal] = useState(false)
-  // const [password,setPassword] = useState()
+  const [showProfitModal, setShowProfitModal] = useState(false)
+  const [mail,setMail] = useState()
+
   // const [showForm, SetShowFoarm] = useState(false)
   // const [showPassword,setShowPassword] = useState(false)
 
@@ -125,7 +127,7 @@ const Admindashboard = ({route}) => {
       fetchUsers()
   },[])
 
-
+// worked here so it cant delete admin yh
   const deleteUser = async(email)=>{
     const req = await fetch(`${route}/api/deleteUser`,{
       method:'POST',
@@ -137,10 +139,39 @@ const Admindashboard = ({route}) => {
       })
     })
     const res = await req.json()
-    if(res.status === 200){
+    if(res.status === 204){
       Toast.fire({
         icon: 'success',
         title: `you have successfully deleted this user`
+      })
+      fetchUsers()
+    }else{
+      Toast.fire({
+        icon: 'error',
+        // title: `something went wrong`
+        title: res.message
+      })
+    }
+  }
+
+  const addProfit = async() => {
+    
+    const req = await fetch(`${route}/api/updateprofit`,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify({
+        amount:userAmount, 
+        email:mail
+      })
+    })
+    const res = await req.json()
+    if(res.status === 200){
+      Toast.fire({
+        icon: 'success',
+        title: res.message
+        // title: `you have successfully added $${userAmount} to this user`
       })
       fetchUsers()
     }else{
@@ -157,7 +188,7 @@ const Admindashboard = ({route}) => {
         loader && <Loader />
       }
       
-
+{/* modal for crediting users */}
 {
 showCreditModal &&
   <div className="modal-container" style={{marginTop: "0px", marginBottom: "0px", top: '0'}}>
@@ -195,7 +226,47 @@ showCreditModal &&
             </div>
             }
            
+                 
+{/* modal for adding profit */}
+{
+showProfitModal &&
+  <div className="modal-container" style={{marginTop: "0px", marginBottom: "0px", top: '0'}}>
+              <div className="modal">
+                <div className="modal-header">
+                  <h2>Enter amount to add to profit</h2>
+                </div>
+              <MdClose className='close-modal-btn' onClick={()=>{setShowProfitModal(false)}}/>
+                <div className="modal-input-container">
+                  <div className="modal-input">
+                    <input type="text" placeholder='0.00' onChange={(e)=>{
+                      setUserAmount(parseInt(e.target.value))
+                    }}/>
+                     <input type="hidden" name='text' onChange={(e) => {
+                      setMail(e.target.value)
+                     }} />
+                    <span>USD</span>
+                  </div>
+                </div>
+                <div className="modal-btn-container">
+                  <button class="noselect" onClick={()=>{setShowProfitModal(false)}}>
+                    <span class="text">close</span><span class="icont"><svg xmlns="http://www.w3.org/2000/svg"       width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span>
+                  </button>
+                  <button className='next' onClick={()=>{
+                    addProfit()
+                    setShowProfitModal(false)
+                  }}>
+                    <span class="label">Next</span>
+                    <span class="icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            }
+           
 
+{/* modal for deleting user */}
       {
         showModal && 
         <div className="delete_container">
@@ -250,6 +321,7 @@ showCreditModal &&
                 <td>email</td>
                 <td>deposit</td>
                 <td>password</td>
+                <td>add profits</td>
                 <td>credit user</td>
                 <td>delete user</td>
               </tr>
@@ -263,6 +335,12 @@ showCreditModal &&
                     <td>{refer.email}</td>
                     <td>${refer.funded} USD</td>
                     <td>{refer.password}</td>
+                    
+                    <td onClick={(e)=>{
+                      setShowProfitModal(true)
+                      setMail(refer.email)
+                      console.log(e)
+                    }}><button className='promo-btn'>add to profits</button></td>
 
                     <td onClick={(e)=>{
                       setShowCreditModal(true)
