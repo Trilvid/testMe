@@ -67,7 +67,7 @@ const Userdashboardwithdraw = ({route}) => {
       min:10,
       max:1000,
       image:'/tron.png',
-      method:'BNB (bep20)',
+      method:'USDT',
     },
   ])
 
