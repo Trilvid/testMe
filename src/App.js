@@ -52,8 +52,9 @@ function App() {
       }
     })
     const myArray = [
+      // removed ,
       {
-        country: 'pakistan',
+        country: 'pakistan'
         amount:'$1000'
       },
       {
