@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/iframe-has-title */
 import './App.css';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { motion,AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import Login from './pages/Login'
